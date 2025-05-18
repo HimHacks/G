@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olympics</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #1f1f1f;
+            color: #f1c40f;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            background-color: #1f1f1f;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #f1c40f;
+            font-size: 1.2em;
+            text-transform: uppercase;
+            padding: 10px;
+        }
+
+        nav ul li a:hover {
+            background-color: #f1c40f;
+            color: #121212;
+            border-radius: 5px;
+        }
+
+        main {
+            padding: 40px 20px;
+        }
+
+        table {
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+            border-collapse: collapse;
+            background-color: #1c1c1c;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        thead {
+            background-color: #f1c40f;
+        }
+
+        thead th {
+            padding: 15px;
+            font-size: 1.4em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #121212;
+        }
+
+        tbody tr:nth-child(odd) {
+            background-color: #252525;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #2c2c2c;
+        }
+
+        tbody tr:hover {
+            background-color: #f1c40f;
+            color: #121212;
+        }
+
+        td {
+            padding: 15px;
+            text-align: center;
+            font-size: 1.2em;
+        }
+
+        .flag {
+            width: 40px;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        .news-section {
+            width: 100%;
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: #1c1c1c;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .news-carousel {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .carousel {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .carousel img {
+            width: 100%;
+            max-height: 200px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .main-news {
+            flex: 2;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .main-news h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #f1c40f;
+        }
+
+        .main-news p {
+            font-size: 1.2em;
+        }
+
+        .additional-news {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .news-item {
+            flex: 1 1 calc(33% - 20px);
+            background-color: #252525;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .news-item h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #f1c40f;
+        }
+
+        .news-item p {
+            font-size: 1em;
+        }
+
+        footer {
+            background-color: #1f1f1f;
+            color: #f1c40f;
+            text-align: center;
+            padding: 15px;
+            position: relative;
+            width: 100%;
+            bottom: 0;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+        }
+ 
+        .section-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: #1c1c1c;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .section-heading {
+            color: #f1c40f;
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .players-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .player {
+            background-color: #252525;
+            padding: 20px;
+            border-radius: 8px;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .player img {
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+
+        .player h3 {
+            color: #f1c40f;
+            font-size: 1.5em;
+            margin-bottom: 5px;
+        }
+
+        .player p {
+            font-size: 1em;
+            margin: 5px 0;
+        }
+
+        #credits {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 50px;
+}
+
+#credits h2 {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#credits ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#credits ul li {
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+#credits ul li strong {
+    color: #333;
+}
+
+
+       
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Olympics</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#medal-tally">Medals</a></li>
+            <li><a href="#news-section">News</a></li>
+            <li><a href="#players-section">Top Players</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="medal-tally">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Country</th>
+                        <th>Flag</th>
+                        <th>Gold</th>
+                        <th>Silver</th>
+                        <th>Bronze</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>USA</td>
+                        <td><img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" width="50"></td>
+                        <td>39</td>
+                        <td>41</td>
+                        <td>33</td>
+                    </tr>
+                    <tr>
+                        <td>China</td>
+                        <td><img src="https://cdn.britannica.com/90/7490-050-5D33348F/Flag-China.jpg" width="50"></td>
+                        <td>38</td>
+                        <td>32</td>
+                        <td>18</td>
+                    </tr>
+                    <tr>
+                        <td>Japan</td>
+                        <td><img src="https://upload.wikimedia.org/wikipedia/en/9/9e/Flag_of_Japan.svg" width="50"></td>
+                        <td>27</td>
+                        <td>14</td>
+                        <td>17</td>
+                    </tr>
+                    <tr>
+                        <td>Germany</td>
+                        <td><img src="https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg" width="50"></td>
+                        <td>10</td>
+                        <td>11</td>
+                        <td>16</td>
+                    </tr>
+                    <tr>
+                        <td>India</td>
+                        <td><img src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg" width="50"></td>
+                        <td>7</td>
+                        <td>6</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>UK</td>
+                        <td><img src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg" width="50"></td>
+                        <td>21</td>
+                        <td>22</td>
+                        <td>23</td>
+                    </tr>
+                    <tr>
+                        <td>France</td>
+                        <td><img src="https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg" width="50"></td>
+                        <td>18</td>
+                        <td>19</td>
+                        <td>15</td>
+                    </tr>
+                    <tr>
+                        <td>Canada</td>
+                        <td><img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/Flag_of_Canada.svg" width="50"></td>
+                        <td>14</td>
+                        <td>13</td>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <td>Australia</td>
+                        <td><img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Flag_of_Australia.svg" width="50"></td>
+                        <td>17</td>
+                        <td>20</td>
+                        <td>13</td>
+                    </tr>
+                    <tr>
+                        <td>Brazil</td>
+                        <td><img src="https://upload.wikimedia.org/wikipedia/en/0/05/Flag_of_Brazil.svg" width="50"></td>
+                        <td>12</td>
+                        <td>10</td>
+                        <td>9</td>
+                    </tr>
+                    <tr>
+                        <td>Russia</td>
+                        <td><img src="https://upload.wikimedia.org/wikipedia/en/f/f3/Flag_of_Russia.svg" width="50"></td>
+                        <td>20</td>
+                        <td>28</td>
+                        <td>23</td>
+                    </tr>
+                    <tr>
+                        <td>South Korea</td>
+                        <td><img src="https://cdn.britannica.com/49/1949-050-39ED83BA/Flag-South-Korea.jpg" width="50"></td>
+                        <td>9</td>
+                        <td>8</td>
+                        <td>13</td>
+                    </tr>
+                    <tr>
+                        <td>Italy</td>
+                        <td><img src="https://upload.wikimedia.org/wikipedia/en/0/03/Flag_of_Italy.svg" width="50"></td>
+                        <td>10</td>
+                        <td>10</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td>Netherlands</td>
+                        <td><img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Flag_of_the_Netherlands.svg" width="50"></td>
+                        <td>10</td>
+                        <td>12</td>
+                        <td>14</td>
+                    </tr>
+                    <tr>
+                        <td>Spain</td>
+                        <td><img src="https://upload.wikimedia.org/wikipedia/en/9/9a/Flag_of_Spain.svg" width="50"></td>
+                        <td>8</td>
+                        <td>9</td>
+                        <td>11</td>
+                    </tr>
+                    <tr>
+                        <td>New Zealand</td>
+                        <td><img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Flag_of_New_Zealand.svg" width="50"></td>
+                        <td>7</td>
+                        <td>6</td>
+                        <td>7</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="news-section" id="news-section">
+            <h2>Latest Olympic News</h2>
+            <div class="news-carousel">
+                <div class="carousel">
+                    <img src="https://i0.wp.com/blog.myswimpro.com/wp-content/uploads/2021/08/caeleb-dressel-USA-flag.jpg?fit=788%2C540&ssl=1" alt="USA Swimming Dominance">
+                    <p>USA's Dominance in Swimming</p>
+                </div>
+                <div class="main-news">
+                    <h2>New Sports Added to the Olympics</h2>
+                    <p>This year, the International Olympic Committee has announced the inclusion of new sports, including skateboarding and surfing, set to attract a younger audience.</p>
+                </div>
+                <div class="carousel">
+                    <img src="https://img.olympics.com/images/image/private/t_16-9_760/f_auto/primary/gqw0qujfqaa0gexpwckx" alt="New Sports in Olympics">
+                    <p>Exciting Additions to the Games</p>
+                </div>
+            </div>
+            <div class="additional-news">
+                <div class="news-item">
+                    <h3>USA's Dominance in Swimming</h3>
+                    <p>The United States has shown unparalleled dominance in swimming events, securing numerous gold medals in the latest Olympic Games.</p>
+                </div>
+                <div class="news-item">
+                    <h3>New Sports Added to the Olympics</h3>
+                    <p>With new sports like skateboarding and surfing, the Olympics aims to engage a younger audience.</p>
+                </div>
+                <div class="news-item">
+                    <h3>Exciting Additions to the Games</h3>
+                    <p>The inclusion of fresh sports highlights the evolution of the Olympics and showcases innovative talent.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="players-section" id="players-section">
+            <div class="section-container">
+                <h2 class="section-heading">Top Players</h2>
+                <div class="players-list">
+            <div class="player">
+                <img src="https://img.olympics.com/images/image/private/t_1-1_300/f_auto/primary/lmusmqtktq8slg9yl1xj" alt="Usain Bolt" width="100">
+                <h3>Usain Bolt</h3>
+                <p>Country: Jamaica</p>
+                <p>Sport: Athletics</p>
+                <p>Achievements: 8 Olympic Gold Medals</p>
+            </div>
+            <div class="player">
+                <img src="https://img.olympics.com/images/image/private/t_1-1_300/f_auto/v1627219484/primary/cts0yqdhtfm9yowtrv1j" alt="Simone Biles" width="100">
+                <h3>Simone Biles</h3>
+                <p>Country: USA</p>
+                <p>Sport: Gymnastics</p>
+                <p>Achievements: 4 Olympic Gold Medals</p>
+            </div>
+            <div class="player">
+                <img src="https://dotorg.brightspotcdn.com/7e/2b/4a0ba6224f7cba0a068991a50d45/800x800-michael-phelps.jpg" alt="Michael Phelps" width="100">
+                <h3>Michael Phelps</h3>
+                <p>Country: USA</p>
+                <p>Sport: Swimming</p>
+                <p>Achievements: 23 Olympic Gold Medals</p>
+            </div>
+            <div class="player">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMMWNDE0cvU2Rd1o0yvq0Qi4kBVVxq7dn1Aw&s" alt="Neeraj Chopra" width="100">
+                <h3>Neeraj Chopra</h3>
+                <p>Country: India</p>
+                <p>Sport: Javelin Throw</p>
+                <p>Achievements: 1 Olympic Gold Medal</p>
+            </div>
+            <div class="player">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjBQmyrhGa10qXBYTlaiKXDf2e3JZ8NoTAFQ&s" alt="Nadia Comăneci" width="100">
+                <h3>Nadia Comăneci</h3>
+                <p>Country: Romania</p>
+                <p>Sport: Gymnastics</p>
+                <p>Achievements: 5 Olympic Gold Medals</p>
+            </div>
+            <div class="player">
+                <img src="https://im.rediff.com/sports/2021/jun/30carl-lewis-1.jpg" alt="Carl Lewis" width="100">
+                <h3>Carl Lewis</h3>
+                <p>Country: USA</p>
+                <p>Sport: Athletics</p>
+                <p>Achievements: 9 Olympic Gold Medals</p>
+            </div>
+            <div class="player">
+                <img src="https://sportsmatik.com/uploads/world-events/players/mark-spitz_1564479386.jpg" alt="Mark Spitz" width="100">
+                <h3>Mark Spitz</h3>
+                <p>Country: USA</p>
+                <p>Sport: Swimming</p>
+                <p>Achievements: 9 Olympic Gold Medals</p>
+            </div>
+            <div class="player">
+                <img src="https://www.tagesspiegel.de/images/7941553/alternates/BASE_1_1_W1000/1658852035000/birgit-fischer-7885.jpeg" alt="Birgit Fischer" width="100">
+                <h3>Birgit Fischer</h3>
+                <p>Country: Germany</p>
+                <p>Sport: Canoeing</p>
+                <p>Achievements: 8 Olympic Gold Medals</p>
+            </div>
+            <div class="player">
+                <img src="https://media.gettyimages.com/id/514950040/photo/7-19-1924-paris-france-paavo-nurmi-finland-winning-the-5-000-meter-race-ritole-finishes-second.jpg?s=612x612&w=gi&k=20&c=hl-oXLGUi_vxnCvbAm3v6nZUo67t3K8CnxT-__eyGdE=" alt="Paavo Nurmi" width="100">
+                <h3>Paavo Nurmi</h3>
+                <p>Country: Finland</p>
+                <p>Sport: Athletics</p>
+                <p>Achievements: 9 Olympic Gold Medals</p>
+            </div>
+            <div class="player">
+                <img src="https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_320,q_50/lsci/db/PICTURES/CMS/319800/319845.png" alt="Ian Thorpe" width="100">
+                <h3>Ian Thorpe</h3>
+                <p>Country: Australia</p>
+                <p>Sport: Swimming</p>
+                <p>Achievements: 5 Olympic Gold Medals</p>
+            </div>
+            <div class="player">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSm0w4opFgcg1J7L8kGDKZiHsGMqIqzXxR_g&s" alt="Katie Ledecky" width="100">
+                <h3>Katie Ledecky</h3>
+                <p>Country: USA</p>
+                <p>Sport: Swimming</p>
+                <p>Achievements: 7 Olympic Gold Medals</p>
+            </div>
+            <div class="player">
+                <img src="https://img.olympics.com/images/image/private/t_1-1_300/f_auto/primary/v4zybqgbkb1fam12igrq" alt="Jesse Owens" width="100">
+                <h3>Jesse Owens</h3>
+                <p>Country: USA</p>
+                <p>Sport: Athletics</p>
+                <p>Achievements: 4 Olympic Gold Medals</p>
+            </div>
+            <div class="player">
+                <img src="https://img.olympics.com/images/image/private/t_1-1_300/f_auto/primary/zzgcd2x8zo6orqp4brwr" alt="Allyson Felix" width="100">
+                <h3>Allyson Felix</h3>
+                <p>Country: USA</p>
+                <p>Sport: Athletics</p>
+                <p>Achievements: 7 Olympic Gold Medals</p>
+            </div>
+            <div class="player">
+                <img src="https://img.olympics.com/images/image/private/t_1-1_300/f_auto/primary/j8cx0zq5zvkf5jry4kqs" alt="Yelena Isinbayeva" width="100">
+                <h3>Yelena Isinbayeva</h3>
+                <p>Country: Russia</p>
+                <p>Sport: Pole Vault</p>
+                <p>Achievements: 2 Olympic Gold Medals</p>
+            </div>
+            <div class="player">
+                <img src="https://static01.nyt.com/images/2021/08/02/sports/02olympics-track-rudisha/02olympics-track-rudisha-mediumSquareAt3X.jpg" alt="David Rudisha" width="100">
+                <h3>David Rudisha</h3>
+                <p>Country: Kenya</p>
+                <p>Sport: Athletics</p>
+                <p>Achievements: 2 Olympic Gold Medals</p>
+            </div>
+            <div class="player">
+                <img src="https://img.olympics.com/images/image/private/t_1-1_300/f_auto/primary/dcsr1kxmts7hylwfugoq" alt="Yohan Blake" width="100">
+                <h3>Yohan Blake</h3>
+                <p>Country: Jamaica</p>
+                <p>Sport: Athletics</p>
+                <p>Achievements: 2 Olympic Gold Medals</p>
+            </div>
+            <div class="player">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThU_8IenkbCVNdJniLNJhKqTjRPNXZnuOgIQ&s" alt="Shelly-Ann Fraser-Pryce" width="100">
+                <h3>Shelly-Ann Fraser-Pryce</h3>
+                <p>Country: Jamaica</p>
+                <p>Sport: Athletics</p>
+                <p>Achievements: 3 Olympic Gold Medals</p>
+            </div>
+            <div class="player">
+                <img src="https://pbs.twimg.com/profile_images/763997868294217729/0sq1rvKa_400x400.jpg" alt="Haile Gebrselassie" width="100">
+                <h3>Haile Gebrselassie</h3>
+                <p>Country: Ethiopia</p>
+                <p>Sport: Athletics</p>
+                <p>Achievements: 2 Olympic Gold Medals</p>
+            </div>
+            <div class="player">
+                <img src="https://runandjumpblog.wordpress.com/wp-content/uploads/2014/05/abebe_bikila_maratona_olimpica_roma_1960-e1399241298762.jpg?w=584" alt="Abebe Bikila" width="100">
+                <h3>Abebe Bikila</h3>
+                <p>Country: Ethiopia</p>
+                <p>Sport: Marathon</p>
+                <p>Achievements: 2 Olympic Gold Medals</p>
+            </div>
+            <div class="player">
+                <img src="https://i0.wp.com/extramilest.com/wp-content/uploads/2024/05/Eliud-Kipchoge-3_edited_1.jpg?fit=597%2C551&ssl=1" alt="Eliud Kipchoge" width="100">
+                <h3>Eliud Kipchoge</h3>
+                <p>Country: Kenya</p>
+                <p>Sport: Marathon</p>
+                <p>Achievements: 2 Olympic Gold Medals</p>
+            </div>
+            <div class="player">
+                <img src="https://img.olympics.com/images/image/private/t_1-1_300/f_auto/primary/rlwn7i8wqjfmv6mrx9k3" alt="Kohei Uchimura" width="100">
+                <h3>Kohei Uchimura</h3>
+                <p>Country: Japan</p>
+                <p>Sport: Gymnastics</p>
+                <p>Achievements: 3 Olympic Gold Medals</p>
+            </div>
+            <div class="player">
+                <img src="https://hips.hearstapps.com/hmg-prod/images/serena-williams3-668d688659c6c.jpg?crop=0.6666666666666666xw:1xh;center,top&resize=1120:*" alt="Serena Williams" width="100">
+                <h3>Serena Williams</h3>
+                <p>Country: USA</p>
+                <p>Sport: Tennis</p>
+                <p>Achievements: 4 Olympic Gold Medals</p>
+            </div>
+            <div class="player">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOAc4c2dju_q17wgDIrT3GuSyx1BSSwmAqyw&s" alt="Greg Louganis" width="100">
+                <h3>Greg Louganis</h3>
+                <p>Country: USA</p>
+                <p>Sport: Diving</p>
+                <p>Achievements: 4 Olympic Gold Medals</p>
+            </div>
+            <div class="player">
+                <img src="https://pbs.twimg.com/profile_images/1098243237117116422/wAWoCrPK_400x400.jpg" alt="Daley Thompson" width="100">
+                <h3>Daley Thompson</h3>
+                <p>Country: UK</p>
+                <p>Sport: Decathlon</p>
+                <p>Achievements: 2 Olympic Gold Medals</p>
+            </div>
+          </div>
+            </div>
+        
+
+    </main>
+
+    <footer>
+        <section id="credits">
+            <h2>Credits</h2>
+            <ul>
+                <li><strong>Team Name:</strong> CodexCrew</li>
+                <li><strong>Project Title:</strong> Olympics: The World of Sports</li>
+                <li><strong>Team Leader:</strong> Jiyansh Bothra</li>
+                <li><strong>Team Members:</strong> Himanshu Bishnoi, Mysha Khetan, Kul Jain</li>
+                <li><strong>Mentor/Guide:</strong> Pratik Parihar</li>
+                <li><strong>Tools & Resources:</strong> VS Code, Bootstrap, Notepad++ etc.</li>
+            </ul>
+        </section>
+        
+        <p>&copy; 2024 Global Olympic Federation</p>
+    </footer>
+    
+
+</body>
